@@ -8,10 +8,10 @@ image: gitpod/workspace-mysql
 tasks:
   - init: |
       sudo apt update
-      sudo apt install -y mysql-server default-libmysqlclient-dev
+      #sudo apt install -y mysql-server default-libmysqlclient-dev
       sudo systemctl start mysql.service
-      echo 'CREATE DATABASE IF NOT EXISTS zmysqldatest;' | mysql -uroot -proot
-      echo "CREATE USER 'zmysqldatest'@'localhost' IDENTIFIED BY 'zmysqldatest';" | mysql -uroot -proot
-      echo "GRANT ALL PRIVILEGES ON zmysqldatest.* TO 'zmysqldatest'@'localhost';" | mysql -uroot -proot
+      echo 'CREATE DATABASE IF NOT EXISTS zmysqldatest;' | mysql -uroot
+      echo "CREATE USER 'zmysqldatest'@'localhost' IDENTIFIED BY 'zmysqldatest';" | mysql -uroot
+      echo "GRANT ALL PRIVILEGES ON zmysqldatest.* TO 'zmysqldatest'@'localhost';" | mysql -uroot
       pip install --upgrade pip zc.buildout tox
       buildout
